@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "ECS.h"
+#include "Components.h"
 
 
 class Engine
@@ -9,8 +11,12 @@ class Engine
 public:
 	sf::RenderWindow* window;
 
+	ECS::World* world;
+
 	static Engine& GetInstance(void);
+
 	void Start(sf::RenderWindow* win);
+	void AddSystem(ECS::EntitySystem* newSys);
 
 private:
 	bool bQuit;
@@ -20,7 +26,7 @@ private:
 	// (only one instance of the engine can be run
 	Engine(Engine& copy);				// hide copy constructor
 	Engine(Engine&& other);				// hide move contructor
-	Engine& operator = (Engine& copy);	// hide assignment operator
+	Engine& operator= (Engine& copy);	// hide assignment operator
 
 	~Engine(void);
 

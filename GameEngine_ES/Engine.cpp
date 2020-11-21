@@ -22,6 +22,12 @@ void Engine::Start(sf::RenderWindow* win)
 	}
 }
 
+void Engine::AddSystem(ECS::EntitySystem* newSys)
+{
+	world->registerSystem(newSys);
+	world->enableSystem(newSys);
+}
+
 void Engine::Update()
 {
 	sf::Event _event;
@@ -35,4 +41,6 @@ void Engine::Update()
 			window->close();
 		}
 	}
+
+	world->tick(10.0f);
 }
