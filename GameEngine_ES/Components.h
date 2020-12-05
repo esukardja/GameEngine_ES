@@ -66,7 +66,7 @@ public:
 		this->totalColumns = newColumns;
 		this->totalRows = newRows;
 
-		currentTime - 0;
+		currentTime = 0;
 
 		bIsFacingRight = true;
 	}
