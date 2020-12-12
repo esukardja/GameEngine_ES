@@ -19,6 +19,8 @@ int main(int argc, char* args[])
 	// Add systems to the engine
 	gameEngine.AddSystem(new RenderingSystem());
 	gameEngine.AddSystem(new AnimationSystem());
+	gameEngine.AddSystem(new InputSystem(&window));
+	gameEngine.AddSystem(new MovementSystem());
 
 	// Create 3 entities to the world
 	background = gameEngine.world->create();
@@ -37,6 +39,7 @@ int main(int argc, char* args[])
 	tux->assign<Sprite2D>("../Debug/Pics/tux_from_linux.png");
 	tux->assign<Animator>(56, 72, 250.0f, 3, 9);
 	tux->get<Animator>()->currentRow = 0; // idle row
+	tux->assign<InputController>();
 
 	std::cout << background->getEntityId() << "is the entity ID." << std::endl;
 	std::cout << stickFigure->getEntityId() << "is the entity ID." << std::endl;

@@ -7,6 +7,8 @@
 
 #include "Systems/RenderingSystem.h"
 #include "Systems/AnimationSystem.h"
+#include "Systems/InputSystem.h"
+#include "Systems/MovementSystem.h"
 
 
 class Engine
