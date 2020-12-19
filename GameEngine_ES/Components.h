@@ -31,6 +31,12 @@ struct Transform
 
 	void Move()
 	{
+		// halve speed when moving diagonally
+		if (xSpeed != 0 && ySpeed != 0)
+		{
+			xSpeed /= 2;
+			ySpeed /= 2;
+		}
 		xPos += xSpeed;
 		yPos += ySpeed;
 	}
@@ -116,3 +122,28 @@ public:
 	}
 };
 ECS_DEFINE_TYPE(InputController);
+
+struct BoxCollider
+{
+public:
+	ECS_DECLARE_TYPE;
+
+	float leftEdge, rightEdge, topEdge, bottomEdge;
+
+	BoxCollider()
+	{
+		this->leftEdge = 0;
+		this->rightEdge = 0;
+		this->topEdge = 0;
+		this->bottomEdge = 0;
+	}
+
+	BoxCollider(float xSide, float ySide, float width, float height)
+	{
+		this->leftEdge = xSide;
+		this->rightEdge = xSide + width;
+		this->topEdge = ySide;
+		this->bottomEdge = ySide + height;
+	}
+};
+ECS_DEFINE_TYPE(BoxCollider);

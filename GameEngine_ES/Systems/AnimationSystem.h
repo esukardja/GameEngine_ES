@@ -1,7 +1,6 @@
 #pragma once
 
-#include "../ECS.h"
-#include "../Components.h"
+#include "../Engine.h"
 
 
 class AnimationSystem : public ECS::EntitySystem
