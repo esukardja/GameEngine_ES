@@ -10,13 +10,11 @@ struct Transform
 	ECS_DECLARE_TYPE;
 
 	float xPos, yPos, rotation;
-	float xSpeed, ySpeed;
+	float xSpeed, ySpeed, xSpeedMod, ySpeedMod;
 
-	Transform(float x, float y)
+	Transform(float x, float y, float newXSpeed = 0.0f, float newYSpeed= 0.0f)
+		:xPos(x), yPos(y), xSpeedMod(newXSpeed), ySpeedMod(newYSpeed)
 	{
-		this->xPos = x;
-		this->yPos = y;
-
 		this->xSpeed = 0;
 		this->ySpeed = 0;
 
@@ -34,8 +32,8 @@ struct Transform
 		// halve speed when moving diagonally
 		if (xSpeed != 0 && ySpeed != 0)
 		{
-			xSpeed /= 2;
-			ySpeed /= 2;
+			xSpeed *= 0.7;
+			ySpeed *= 0.7;
 		}
 		xPos += xSpeed;
 		yPos += ySpeed;
