@@ -154,19 +154,19 @@ void PhysicsSystem::CheckCollisionSides(
 
 	if (_xSpeed > 0 && _newTouchingX <= _touchedX)
 	{
-		touchedEntity->get<struct Transform>()->xPos++;
+		touchedEntity->get<struct Transform>()->xPos = touchingEntity->get<struct BoxCollider>()->rightEdge;
 	}
 	else if (_xSpeed < 0 && _newTouchingX >= _touchedX)
 	{
-		touchedEntity->get<struct Transform>()->xPos--;
+		touchedEntity->get<struct Transform>()->xPos = touchingEntity->get<struct BoxCollider>()->leftEdge - touchedEntity->get<struct BoxCollider>()->boxWidth;
 	}
 	if (_ySpeed > 0 && _newTouchingY <= _touchedY)
 	{
-		touchedEntity->get<struct Transform>()->yPos++;
+		touchedEntity->get<struct Transform>()->yPos = touchingEntity->get<struct BoxCollider>()->bottomEdge;
 	}
 	else if (_ySpeed < 0 && _newTouchingY >= _touchedY)
 	{
-		touchedEntity->get<struct Transform>()->yPos--;
+		touchedEntity->get<struct Transform>()->yPos = touchingEntity->get<struct BoxCollider>()->topEdge - touchedEntity->get<struct BoxCollider>()->boxHeight;
 	}
 }
 

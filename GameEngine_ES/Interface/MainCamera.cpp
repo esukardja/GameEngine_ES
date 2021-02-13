@@ -17,7 +17,9 @@ void MainCamera::Update(ECS::World* world, float deltaTime, sf::RenderWindow* ga
 {
 	// Define new vector
 	sf::Vector2f _windowSize(gameWindow->getSize().x, gameWindow->getSize().y);
+
 	cameraView.setSize(_windowSize);
+
 	float _cameraMoveSpeed = 0.1f;
 
 	// Move the camera according to the arrow keys

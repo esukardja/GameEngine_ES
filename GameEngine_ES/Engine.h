@@ -4,7 +4,9 @@
 
 #include <SFML/Graphics.hpp>
 #include "ECS.h"
+
 #include "Components.h"
+#include "Interface/MainCamera.h"
 
 #include "Systems/RenderingSystem.h"
 #include "Systems/AnimationSystem.h"
@@ -17,8 +19,9 @@ class Engine
 {
 public:
 	sf::RenderWindow* window;
-
 	ECS::World* world;
+
+	class MainCamera mainCamera;
 
 	static Engine& GetInstance(void);
 

@@ -37,12 +37,13 @@ int main(int argc, char* args[])
 	stickFigure->assign<struct Animator>(32, 32, 400.0f, 4, 1);
 	stickFigure->assign<struct BoxCollider>();
 
-	tux->assign<struct Transform>(200, 200, 0.3f, 0.3f);
+	tux->assign<struct Transform>(200, 200, 0.6f, 0.6f);
 	tux->assign<struct Sprite2D>("../Debug/Pics/tux_from_linux.png");
 	tux->assign<struct Animator>(56, 72, 250.0f, 3, 9);
 	tux->get<struct Animator>()->currentRow = 0; // idle row
 	tux->assign<struct InputController>();
 	tux->assign<struct BoxCollider>();
+	tux->assign<struct Camera>(sf::Vector2f(window.getSize().x / 2, window.getSize().y / 2));
 
 	std::cout << background->getEntityId() << "is the entity ID." << std::endl;
 	std::cout << stickFigure->getEntityId() << "is the entity ID." << std::endl;

@@ -29,11 +29,11 @@ struct Transform
 
 	void Move()
 	{
-		// halve speed when moving diagonally
+		// make the entity move 1 speed diagonally, while moving diagonally
 		if (xSpeed != 0 && ySpeed != 0)
 		{
-			xSpeed *= 0.7;
-			ySpeed *= 0.7;
+			xSpeed *= 0.707;
+			ySpeed *= 0.707;
 		}
 		xPos += xSpeed;
 		yPos += ySpeed;
@@ -127,6 +127,7 @@ public:
 	ECS_DECLARE_TYPE;
 
 	float leftEdge, rightEdge, topEdge, bottomEdge;
+	float boxWidth, boxHeight;
 
 	BoxCollider()
 	{
@@ -147,6 +148,21 @@ public:
 		this->rightEdge = xSide + width;
 		this->topEdge = ySide;
 		this->bottomEdge = ySide + height;
+		this->boxWidth = width;
+		this->boxHeight = height;
 	}
 };
 ECS_DEFINE_TYPE(BoxCollider);
+
+struct Camera
+{
+public:
+	ECS_DECLARE_TYPE;
+	sf::View cameraView;
+
+	Camera(sf::Vector2f pivot)
+	{
+		cameraView.setCenter(pivot);
+	}
+};
+ECS_DEFINE_TYPE(Camera);
